@@ -1,13 +1,13 @@
 .hello{
   color:aliceblue;
-  font-size: xx-large;
+  font-size: 38px;
   font-family: Arial;
 }
 
 .shortDescription{
   color:lightgrey;
-  font-size: medium;
   font-family: Arial;
+  font-size: 16px;
 }
 
 .main {
