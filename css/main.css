@@ -1,0 +1,19 @@
+.hello{
+  color:aliceblue;
+  font-size: x-large;
+  font-family: Arial;
+}
+
+.shortDescription{
+  color:lightgrey;
+  font-size: large;
+  font-family: Arial;
+}
+
+.main {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(to bottom right, rgb(127, 105, 188), rgb(87, 28, 138));
+  text-align: center;
+  padding-top: 15%;
+}
