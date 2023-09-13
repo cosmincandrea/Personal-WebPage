@@ -1,63 +1,85 @@
-
-h5{
+h5 {
   height: 100%;
   margin-top: 20%;
 }
 
-.inline{
+.inline {
   display: inline-block;
 }
-.block{
+
+.block {
   display: block;
 }
 
-.logo{
-    max-height: fit-content;
+.logo {
+
+  max-height: fit-content;
 }
 
-.navButton{
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    border-width: 0px;
-    border-left-width: px;
-    border-color: black;
-}
-
-.aboutMe{
+.projectCard{
+  border-color:black;
+  border-radius: 20px;
+  padding: 5%;
+  width: 100%;
+  height: 100px;
+  color: white;
   display: grid;
+  grid-template-columns: 3fr 2fr;
+}
+
+
+.navButton {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border-width: 0px;
+  border-left-width: px;
+  border-color: black;
+}
+
+.aboutMe {
+  display: grid;
+  height: 100%;
   grid-template-columns: 1fr 3fr;
   color: white;
 }
 
-.description{
-  padding:50px;
+.description {
+  padding: 50px;
 }
-.prioName{
+
+.prioName {
   font-size: xx-large;
 }
-.bio{
-  
-  padding:5%;
+
+.titleProjects {
+  padding-left: 50px;
+  color: white;
+}
+
+.bio {
+
+  padding: 5%;
   text-align: start;
   font-size: large;
 }
 
-.profilePic{
-    padding: 35px;
-    width: 100%;
-    border-width: 0px;
-    border-radius: 50px;
+.profilePic {
+  padding: 35px;
+  width: 100%;
+  border-width: 5px;
+  border-color: black;
+  border-radius: 50px;
 }
 
-.navbar{
-    display: grid;
-    grid-template-columns: 0px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 0px;
-    background-color: #3c1b9c;
-    
+.navbar {
+  display: grid;
+  grid-template-columns: 0px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 0px;
+  background-color: #3c1b9c;
+
 }
 
-.navBarItem{
+.navBarItem {
   text-align: center;
   color: aqua;
   overflow: hidden;
@@ -70,4 +92,6 @@ body {
   width: 100%;
   height: 100vh;
   background-image: linear-gradient(to bottom right, rgb(60, 27, 156), rgb(80, 50, 195));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
