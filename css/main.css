@@ -1,19 +1,73 @@
-.hello{
-  color:aliceblue;
-  font-size: 38px;
-  font-family: Arial;
+
+h5{
+  height: 100%;
+  margin-top: 20%;
 }
 
-.shortDescription{
-  color:lightgrey;
-  font-family: Arial;
-  font-size: 16px;
+.inline{
+  display: inline-block;
+}
+.block{
+  display: block;
 }
 
-.main {
+.logo{
+    max-height: fit-content;
+}
+
+.navButton{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border-width: 0px;
+    border-left-width: px;
+    border-color: black;
+}
+
+.aboutMe{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  color: white;
+}
+
+.description{
+  padding:50px;
+}
+.prioName{
+  font-size: xx-large;
+}
+.bio{
+  
+  padding:5%;
+  text-align: start;
+  font-size: large;
+}
+
+.profilePic{
+    padding: 35px;
+    width: 100%;
+    border-width: 0px;
+    border-radius: 50px;
+}
+
+.navbar{
+    display: grid;
+    grid-template-columns: 0px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 0px;
+    background-color: #3c1b9c;
+    
+}
+
+.navBarItem{
+  text-align: center;
+  color: aqua;
+  overflow: hidden;
+  height: 85px;
+  max-height: 85px;
+  vertical-align: top;
+}
+
+body {
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(to bottom right, rgb(127, 105, 188), rgb(87, 28, 138));
-  text-align: center;
-  padding-top: 15%;
+  background-image: linear-gradient(to bottom right, rgb(60, 27, 156), rgb(80, 50, 195));
 }
