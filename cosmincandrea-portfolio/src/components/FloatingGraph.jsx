@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import ForceGraph2D from "react-force-graph-2d";
 
-// Define Nodes & Edges
 const nodes = [
   { id: "projects", name: "Projects", icon: "📁" },
   { id: "experience", name: "Experience", icon: "💼" },
@@ -9,25 +8,49 @@ const nodes = [
   { id: "research", name: "Research", icon: "🔬" }
 ];
 
-var links;
-
-links = [
+const links = [
   { source: "research", target: "projects" },
   { source: "education", target: "projects" },
-  { source: "projects", target: "experience"},
+  { source: "projects", target: "experience" },
   { source: "education", target: "research" }
-]
+];
 
 const graphData = { nodes, links };
 
 export default function FloatingGraph() {
   const fgRef = useRef(null);
   const [hoveredNode, setHoveredNode] = useState(null);
+  const [nodePositions, setNodePositions] = useState({});
 
   useEffect(() => {
     if (!fgRef.current) return;
+    fgRef.current.d3Force("charge").strength(-1000);
 
-    fgRef.current.d3Force("charge").strength(-500);
+    const initialPositions = {};
+    graphData.nodes.forEach((node) => {
+      initialPositions[node.id] = {
+        x: node.x || Math.random() * 300,
+        y: node.y || Math.random() * 300,
+        offsetX: 0,
+        offsetY: 0
+      };
+    });
+
+    setNodePositions(initialPositions);
+
+    // Floating effect
+    const interval = setInterval(() => {
+      setNodePositions((prevPositions) => {
+        const updatedPositions = { ...prevPositions };
+        Object.keys(updatedPositions).forEach((id) => {
+          updatedPositions[id].offsetX = Math.sin(Date.now() * 0.001 + id.length) * 3;
+          updatedPositions[id].offsetY = Math.cos(Date.now() * 0.001 + id.length) * 3;
+        });
+        return updatedPositions;
+      });
+    }, 50);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -36,26 +59,44 @@ export default function FloatingGraph() {
         ref={fgRef}
         graphData={graphData}
         backgroundColor="transparent"
-        linkColor={() => "#00ffff"}
-        enablePanInteraction={false} // No manual panning
-        enableZoomInteraction={false} // No zooming
-       // enableNodeDrag={false} // Nodes stay fixed
-        linkWidth={2}
+        linkColor={() => "#00ff00"} // Neon Green Links
+        enablePanInteraction={false}
+        enableZoomInteraction={false}
+        linkWidth={1.5}
         nodeCanvasObjectMode={() => "replace"}
         nodeCanvasObject={(node, ctx) => {
           const isHovered = hoveredNode?.id === node.id;
-          const r = isHovered ? 22 : 18; // Proportional size
+          const screenFactor = window.innerWidth < 768 ? 0.25 : 0.45; // Adjust size for responsiveness
+          const r = isHovered ? 50 * screenFactor : 30 * screenFactor;
+          const posX = node.x + (nodePositions[node.id]?.offsetX || 0);
+          const posY = node.y + (nodePositions[node.id]?.offsetY || 0);
 
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, r, 0, 2 * Math.PI, false);
-          ctx.fillStyle = isHovered ? "#555" : "#444"; // Darker on hover
-          ctx.fill();
-
-          ctx.fillStyle = "#fff";
-          ctx.font = `${isHovered ? "1.2vw" : "1vw"} sans-serif`;
+          ctx.fillStyle = "black"; // Black Node Background
+          ctx.strokeStyle = "#00ff00"; // Neon Green Border
+          ctx.lineWidth = 1.5;
+          ctx.font = `${isHovered ? "14px" : "12px"} sans-serif`;
           ctx.textAlign = "center";
           ctx.textBaseline = "middle";
-          ctx.fillText(isHovered ? node.name : node.icon, node.x, node.y + 1);
+
+          if (isHovered) {
+            // Animated transition to rectangle
+            ctx.beginPath();
+            ctx.roundRect(posX - 35, posY - 12, 70, 24, 10);
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = "#fff";
+            ctx.fillText(node.name, posX, posY);
+          } else {
+            // Regular Circle
+            ctx.beginPath();
+            ctx.arc(posX, posY, r, 0, 2 * Math.PI, false);
+            ctx.fill();
+            ctx.stroke();
+
+            // Render the icon inside
+            ctx.fillStyle = "#fff";
+            ctx.fillText(node.icon, posX, posY);
+          }
         }}
         onNodeHover={(node) => {
           setHoveredNode(node || null);
