@@ -14,30 +14,89 @@
 .profile-section {
   flex: 1;
   text-align: left;
-  padding-left: 5rem;
+  margin-left: 2vw;
+  padding-left: 2vw;
 }
 
-.profile-pic {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
+.profile-img {
+  width: 10vw;
+  height: 10vw;
   border-radius: 50%;
-  border: 3px solid #fff;
-  margin-bottom: 1rem;
+  object-fit: cover;
+  border: 5px solid white;
 }
 
 .profile-name {
-  font-size: 2.5rem;
+  font-size: 2.5vw;
   font-weight: bold;
-  color: #ffffff;
+  max-width: 25vw;
+  color: white;
+  margin-top: 1vw;
 }
 
 .profile-description {
-  font-size: 1.1rem;
-  color: #ccc;
-  max-width: 500px;
+  font-size: 1vw;
+  color: white;
+  text-align: justify;
+  max-width: 30vw;
+  line-height: 1.5;
+  margin-top: 0.5vw;
 }
 
+.profile-location {
+  font-size: 1vw;
+  font-weight: bold;
+  color: #00ffff;
+  margin-top: 1vw;
+}
+
+
+.icon {
+  margin-right: 0.5vw;
+  font-size: 1.2vw;
+}
+
+/* Contact Links */
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1vw;
+}
+
+.contact-item {
+  font-size: 1vw;
+  color: white;
+  margin-top: 1vw;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.contact-item:hover {
+  color: #00ffff;
+}
+
+/* Download Resume Button */
+.download-resume {
+  font-size: 1vw;
+  font-weight: bold;
+  color: black;
+  background: #00ffff;
+  padding: 0.8vw 1.5vw;
+  border-radius: 0.5vw;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2vw;
+  transition: 0.3s;
+}
+
+.download-resume:hover {
+  background: white;
+  color: black;
+}
 /* Right section (Graph) */
 .graph-section {
   flex: 1;
@@ -48,11 +107,19 @@
 }
 
 .graph-container {
-  width:500px; /* Make graph take up 70% of the container */
-  height: 500px;
+  width: 60vw;
+  height: 85vh;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   position: relative;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .graph-container {
+    width: 90vw;
+    height: 60vh;
+  }
 }
