@@ -1,0 +1,37 @@
+.section1-container {
+  display: flex;
+  flex-direction: column; /* vertical stacking */
+  align-items: center;    /* center horizontally */
+  justify-content: flex-start;
+  padding: 2rem 1rem;
+  width: 100%;
+  min-height: 100vh; /* ensures the section spans the full viewport in height */
+}
+
+.section1-profile {
+  text-align: center;
+  margin-bottom: 2rem; /* space between profile and the graph */
+}
+
+.profile-pic {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-bottom: 1rem;
+}
+
+.profile-name {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+  color: #f0f0f0;
+}
+
+.profile-description {
+  font-size: 1.1rem;
+  max-width: 600px;
+  line-height: 1.4;
+  color: #ccc;
+  margin: 0 auto; /* center text block */
+}

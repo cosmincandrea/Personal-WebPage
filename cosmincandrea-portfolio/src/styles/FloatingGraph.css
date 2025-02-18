@@ -1,0 +1,86 @@
+.floating-graph-container {
+  position: relative;
+  width: 100%;
+  height: 400px; /* enough space to show lines/nodes clearly */
+  margin-top: 2rem;
+}
+
+/* The SVG behind everything for edges */
+.graph-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Neon blue lines connecting the nodes */
+.graph-lines line {
+  stroke: #00ffff;    /* neon blue */
+  stroke-width: 2; 
+  transition: stroke 0.3s;
+}
+
+/* Each node: 40×40 circle by default, so the center is radius=20. */
+.graph-node {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #444;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.3s;
+
+  /* "Float" up/down animation */
+  animation: floatNode 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatNode {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-10px); }
+}
+
+/* Icon in the center */
+.node-icon {
+  font-size: 20px;
+  z-index: 2; /* above the label */
+}
+
+/* Label hidden until hover */
+.node-label {
+  position: absolute;
+  background: #444;
+  white-space: nowrap;
+  padding: 2px 8px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+
+  /* place below node, horizontally centered */
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* On hover: expand shape to show label */
+.graph-node:hover {
+  border-radius: 8px;
+  width: auto;
+  height: auto;
+  padding: 6px 8px;
+}
+
+.graph-node:hover .node-icon {
+  margin-right: 8px;
+}
+
+/* Fade label in */
+.graph-node:hover .node-label {
+  opacity: 1;
+}
