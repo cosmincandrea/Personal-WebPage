@@ -84,3 +84,10 @@
 .graph-node:hover .node-label {
   opacity: 1;
 }
+.floating-graph-wrapper {
+  width: 100%;
+  height: calc(100vh - 250px); /* Adjust based on profile height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

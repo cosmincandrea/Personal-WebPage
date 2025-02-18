@@ -1,37 +1,58 @@
+/* Overall container - 2 columns */
 .section1-container {
   display: flex;
-  flex-direction: column; /* vertical stacking */
-  align-items: center;    /* center horizontally */
-  justify-content: flex-start;
-  padding: 2rem 1rem;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  min-height: 100vh; /* ensures the section spans the full viewport in height */
+  height: 100vh; /* Full screen */
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
-.section1-profile {
-  text-align: center;
-  margin-bottom: 2rem; /* space between profile and the graph */
+/* Left section (Profile) */
+.profile-section {
+  flex: 1;
+  text-align: left;
+  padding-left: 5rem;
 }
 
 .profile-pic {
-  width: 160px;
-  height: 160px;
+  width: 180px;
+  height: 180px;
   object-fit: cover;
   border-radius: 50%;
-  border: 2px solid #fff;
+  border: 3px solid #fff;
   margin-bottom: 1rem;
 }
 
 .profile-name {
-  font-size: 2rem;
-  margin: 0.5rem 0;
-  color: #f0f0f0;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
 }
 
 .profile-description {
   font-size: 1.1rem;
-  max-width: 600px;
-  line-height: 1.4;
   color: #ccc;
-  margin: 0 auto; /* center text block */
+  max-width: 500px;
+}
+
+/* Right section (Graph) */
+.graph-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.graph-container {
+  width:500px; /* Make graph take up 70% of the container */
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
 }
